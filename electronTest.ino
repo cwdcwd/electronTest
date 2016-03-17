@@ -8,7 +8,7 @@ FuelGauge fuel;
 void setup() {
   Serial.begin(9600);
   Serial.println("Starting up");
-  Particle.variable("batteryLevel", fBattery);
+  //Particle.variable("batteryLevel", fBattery);
   bool success = Particle.function("batteryLevel", getBatteryLevel);
 }
 
@@ -16,7 +16,7 @@ void loop() {
   fBattery=fuel.getSoC();
 
   if(fBatteryLast!=fBattery){
-    Serial.print("Battery Level Changed!");
+    Serial.print("Battery Level Changed! ");
     Serial.println(fBattery);
     Particle.publish("BatteryLevel",String(fBattery));
   }
